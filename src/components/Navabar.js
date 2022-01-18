@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/user";
 
 export default function Navabar() {
     const { user, setUser } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const handleLogOut = () => {
         fetch(`/logout`, {
@@ -15,7 +16,10 @@ export default function Navabar() {
             <Link
                 className="nav-link text-dark dropdown-item"
                 to="/"
-                onClick={handleLogOut}
+                onClick={()=>{
+                    handleLogOut()
+                    navigate('/')
+                    }}
             >
                 Log Out
             </Link>

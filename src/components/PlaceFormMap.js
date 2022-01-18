@@ -5,15 +5,18 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 const styles = {
-    width: "90vw",
+    width: "80vw",
     height: "50vh",
-    // margin: '10em',
-    padding: '5em',
-    border: "5px solid"
-  
+    margin: 'auto',
+   
+    border: "5px solid",
+    position: 'relative',
+    
+    
   };
 
-const DashMap = () => {
+export default function PlaceFormMap({setMapped_Address, setPlace_Type, setLatitude, setLongitude}) {
+
     const [map, setMap] = useState(null);
     const mapContainer = useRef(null);
     const [lng, setLng] = useState(-98.100000);
@@ -39,7 +42,14 @@ const DashMap = () => {
 
             map.addControl(directions, 'top-right')
             directions.on('result', (e)=>{
-                console.log(e.result)
+            
+               
+                    setMapped_Address(e.result.place_name)
+                    setPlace_Type(e.result.place_type[0])
+                    setLatitude(e.result.geometry.coordinates[0])
+                    setLongitude(e.result.geometry.coordinates[1])
+            
+                
             })
             map.on("load", () => {
                 setMap(map);
@@ -62,15 +72,13 @@ const DashMap = () => {
 
     return (
         <div className="row">
-            <div className="sidebar text center col-xs-3">
-                Center Of Map: Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-            </div>
-            <div ref={el => (mapContainer.current = el)} style={styles} />
-            
-        
-
+        <div className="sidebar text center col-xs-3">
+            Center Of Map: Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
         </div>
-    );
-};
+        <div ref={el => (mapContainer.current = el)} style={styles} />
+        
+    
 
-export default DashMap;
+    </div>
+    )
+}

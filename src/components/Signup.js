@@ -41,7 +41,7 @@ export default function Signup() {
                         username: username,
                         email: email
                     })
-                    setTimeout(() => setErrors(false), 5000);
+                    setTimeout(() => setErrors(false), 10000);
                 })
             }
 
