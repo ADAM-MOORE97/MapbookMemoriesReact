@@ -14,7 +14,7 @@ export default function LocationDetails() {
         fetch(`/locations/${params.id}`)
         .then(res=>{
             if(res.ok){
-                res.json().then(data=>console.log(data))
+                res.json().then(data=>setLocationDetails(data))
             }else{
                 res.json().then(data=> {
                   
@@ -32,7 +32,7 @@ export default function LocationDetails() {
     if(!locationDetails){
         return(
             <div>
-                <h3 className="alert-danger m-1">{error} within your saved data, navigating back to your Dashboard.....</h3>
+                <h3 className="alert-danger m-1">Status: 404, {error} within your saved data, navigating back to your Dashboard...</h3>
             </div>
         )
     }

@@ -25,7 +25,7 @@ export default function LocationForm() {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-let locationInfo = new FormData();
+const locationInfo = new FormData();
 locationInfo.append('custom_name', custom_name)
 locationInfo.append('mapped_address', mapped_address)
 locationInfo.append('place_type', place_type)
@@ -33,11 +33,11 @@ locationInfo.append('latitude', latitude)
 locationInfo.append('longitude', longitude)
 locationInfo.append('description', description)
 locationInfo.append('visited', visited)
-locationInfo.append('user_id', user.id)
+// locationInfo.append('user_id', user.id)
+
 fetch('/locations/new', {
     method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(locationInfo)
+    body: locationInfo
 }).then(res => {
     if (res.ok){
         res.json().then(data=>{

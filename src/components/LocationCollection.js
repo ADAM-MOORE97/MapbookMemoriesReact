@@ -17,7 +17,7 @@ if(locationArray.length > 0){
 else
     return (
         <div>
-            <em>It appears that you have no locations at this time. Click button below to add a new location to your collection!</em>
+            <em>It appears that you have no locations added at this time. Click button below to add a new location to your collection!</em>
             <button>Location Form</button>
         </div>
     )

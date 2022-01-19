@@ -43,7 +43,7 @@ export default function PlaceFormMap({setMapped_Address, setPlace_Type, setLatit
             map.addControl(directions, 'top-right')
             directions.on('result', (e)=>{
             
-               
+               console.log(e)
                     setMapped_Address(e.result.place_name)
                     setPlace_Type(e.result.place_type[0])
                     setLatitude(e.result.geometry.coordinates[0])
