@@ -46,8 +46,8 @@ export default function PlaceFormMap({setMapped_Address, setPlace_Type, setLatit
                console.log(e)
                     setMapped_Address(e.result.place_name)
                     setPlace_Type(e.result.place_type[0])
-                    setLatitude(e.result.geometry.coordinates[0])
-                    setLongitude(e.result.geometry.coordinates[1])
+                    setLatitude(e.result.geometry.coordinates[1])
+                    setLongitude(e.result.geometry.coordinates[0])
             
                 
             })

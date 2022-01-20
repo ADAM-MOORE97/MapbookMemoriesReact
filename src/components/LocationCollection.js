@@ -8,15 +8,18 @@ console.log(user)
 let locationArray = user.locations
 if(locationArray.length > 0){
     return(
-        <div>
- {locationArray.map(location=><LocationCard location={location} key={location.id}/>)}
+        <div className='container-fluid'>
+            <div className='row'>
+            {locationArray.map(location=><LocationCard location={location} key={location.id}/>)}
+            </div>
+
         </div>
        
         )
 }
 else
     return (
-        <div>
+        <div className> 
             <em>It appears that you have no locations added at this time. Click button below to add a new location to your collection!</em>
             <button>Location Form</button>
         </div>

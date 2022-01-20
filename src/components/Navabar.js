@@ -23,7 +23,10 @@ export default function Navabar() {
             >
                 Log Out
             </Link>
+            
 
         </div>
+
+
     )
 }

@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
+import { UserContext } from '../context/user';
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -14,6 +15,7 @@ const styles = {
   };
 
 const DashMap = () => {
+    const { user, setUser } = useContext(UserContext);
     const [map, setMap] = useState(null);
     const mapContainer = useRef(null);
     const [lng, setLng] = useState(-98.100000);
@@ -58,7 +60,17 @@ const DashMap = () => {
         if (!map) initializeMap({ setMap, mapContainer });
     }, [map]);
 
-
+    if(user.locations.length > 0 && map){
+        user.locations.map((location, i)=>{
+            let style= location.visited? 'green' : 'red'
+            let lng = Number(location.longitude)
+            let lat = Number(location.latitude)
+            let marker = new mapboxgl.Marker({color: style, anchor: 'bottom'}).setLngLat([lng, lat]).addTo(map)
+            marker.getElement().id = location.id
+            console.log(marker.getElement())
+     
+        })
+    }
 
     return (
         <div className="row">
@@ -66,7 +78,7 @@ const DashMap = () => {
                 Center Of Map: Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
             </div>
             <div ref={el => (mapContainer.current = el)} style={styles} />
-            
+       
         
 
         </div>

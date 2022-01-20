@@ -9,7 +9,7 @@ export default function LocationDetails() {
     const [locationDetails, setLocationDetails]=useState(false)
     // error
     const [error, setError] =useState('')
-
+console.log(params)
     useEffect(()=>{
         fetch(`/locations/${params.id}`)
         .then(res=>{
@@ -29,6 +29,7 @@ export default function LocationDetails() {
             }
         })
     },[])
+    console.log(locationDetails)
     if(!locationDetails){
         return(
             <div>
@@ -38,7 +39,7 @@ export default function LocationDetails() {
     }
     return (
         <div>
-            <p>LOCO DETAILS</p>
+            
         </div>
     )
 }

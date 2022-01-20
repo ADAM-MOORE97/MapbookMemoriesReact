@@ -1,5 +1,6 @@
 import react, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../context/user';
+import {Link} from 'react-router-dom'
 import DashMap from './DashMap';
 
 export default function Dashboard({ trips, locations }) {
@@ -37,15 +38,13 @@ export default function Dashboard({ trips, locations }) {
                     <div className='col-xs-3 mt-5 border '>
                         <h6 className='text'>Locations Visited: {locationVisited} </h6>
                         <h6 className='text'>Future Locations: {locationPlanned} </h6>
-                        {/* <Link to="/trips/gallery">
-        <button className='btn btn-dark m-2'>Gallery</button>
-        </Link>
-        <Link to="/trips/collection">
+                        
+        <Link to="/locations/collection">
             <button className='btn btn-dark m-2'>See All</button>
         </Link>
-        <Link to='/trips/new'>
+        <Link to='/locations/new'>
         <button className='btn btn-dark m-2'>Add</button>
-        </Link> */}
+        </Link>
 
                     </div>
                 </div>
