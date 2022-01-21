@@ -95,3 +95,6 @@
 .card-footer{
     margin-bottom: 0;
 }
+.card-subtitle{
+    min-height: 40px;
+}

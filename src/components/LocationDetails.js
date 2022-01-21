@@ -14,7 +14,9 @@ console.log(params)
         fetch(`/locations/${params.id}`)
         .then(res=>{
             if(res.ok){
-                res.json().then(data=>setLocationDetails(data))
+                res.json().then(data=>{
+                    console.log(data)
+                    setLocationDetails(data)})
             }else{
                 res.json().then(data=> {
                   
