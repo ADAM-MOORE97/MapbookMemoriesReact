@@ -98,3 +98,30 @@
 .card-subtitle{
     min-height: 40px;
 }
+
+.Navbar{
+  background-color: #7ac142;
+  width: 100%;
+  height: 80px;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+}
+
+.Navbar .leftSide{
+  flex: 50%;
+  /* background-color: #fff; */
+}
+.Navbar .rightSide{
+flex: 50%;
+/* background-color: aqua; */
+}
+
+.navbar{
+  justify-content: flex-start !important
+}
+
+.mapboxgl-ctrl-geocoder--input{
+max-width: fit-content;
+
+}
+

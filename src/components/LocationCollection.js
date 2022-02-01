@@ -1,16 +1,16 @@
-import react, { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../context/user';
+import react, { useState, useEffect } from 'react';
+
 import LocationCard from './LocationCard';
 
-export default function LocationCollection() {
-    const { user, setUser } = useContext(UserContext);
-console.log(user)
-let locationArray = user.locations
-if(locationArray.length > 0){
+export default function LocationCollection({locations}) {
+  
+
+
+if(locations.length > 0){
     return(
         <div className='container-fluid'>
             <div className='row'>
-            {locationArray.map(location=><LocationCard location={location} key={location.id}/>)}
+            {locations.map(place=><LocationCard location={place} key={place.id}/>)}
             </div>
 
         </div>

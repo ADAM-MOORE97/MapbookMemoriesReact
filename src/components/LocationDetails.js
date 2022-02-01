@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import MiniTripCard from "./MiniTripCard";
 
 export default function LocationDetails() {
     // Params & Navigation
@@ -9,7 +10,7 @@ export default function LocationDetails() {
     const [locationDetails, setLocationDetails]=useState(false)
     // error
     const [error, setError] =useState('')
-console.log(params)
+
     useEffect(()=>{
         fetch(`/locations/${params.id}`)
         .then(res=>{
@@ -41,7 +42,12 @@ console.log(params)
     }
     return (
         <div>
-            
+            <h1>{locationDetails.custom_name}</h1>
+            <h2>{locationDetails.mapped_address}</h2>
+            <h3>{locationDetails.latitude}, {locationDetails.longitude}</h3>
+            <p>{locationDetails.description}</p>
+            {/* <div>{locationDetails.trips.map(trip=><MiniTripCard trip={trip}/>)}</div> */}
+            <p>Trips taken: {locationDetails.trips.length}</p>
         </div>
     )
 }

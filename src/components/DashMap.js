@@ -8,7 +8,7 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 const styles = {
     width: "90vw",
     height: "50vh",
-    // margin: '10em',
+//   margin: '10em',
     padding: '5em',
     border: "5px solid"
   
@@ -56,24 +56,25 @@ const DashMap = () => {
       
 
         };
+        if(user.locations.length > 0 && map){
+            user.locations.map((location)=>{
+                let style= location.visited? 'green' : 'red'
+                let lng = Number(location.longitude)
+                let lat = Number(location.latitude)
+                let marker = new mapboxgl.Marker({color: style, anchor: 'bottom'}).setLngLat([lng, lat]).addTo(map)
+                marker.getElement().id = location.id
+                console.log(marker.getElement())
+         
+            })
+        }
 
         if (!map) initializeMap({ setMap, mapContainer });
     }, [map]);
 
-    if(user.locations.length > 0 && map){
-        user.locations.map((location, i)=>{
-            let style= location.visited? 'green' : 'red'
-            let lng = Number(location.longitude)
-            let lat = Number(location.latitude)
-            let marker = new mapboxgl.Marker({color: style, anchor: 'bottom'}).setLngLat([lng, lat]).addTo(map)
-            marker.getElement().id = location.id
-            console.log(marker.getElement())
-     
-        })
-    }
+
 
     return (
-        <div className="row">
+        <div className="row m-1">
             <div className="sidebar text center col-xs-3">
                 Center Of Map: Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
             </div>

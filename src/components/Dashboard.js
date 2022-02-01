@@ -14,9 +14,14 @@ export default function Dashboard({ trips, locations }) {
 
     return (
         <div>
+            
+            
+
+              
             <h1>Welcome to Mapbook Memories {user.username}</h1>
             <div className='container'>
                 <div className='row'>
+                    <DashMap/>
                     <div className='col-xs-3 mt-5 border center'>
                         <h6 className='text'>Trips Taken:{tripTaken} </h6>
                         <h6 className='text'>Trips Planned:{tripPlanned} </h6>
@@ -35,11 +40,12 @@ export default function Dashboard({ trips, locations }) {
 
                 </div>
                 <div className='row'>
+                
                     <div className='col-xs-3 mt-5 border '>
                         <h6 className='text'>Locations Visited: {locationVisited} </h6>
                         <h6 className='text'>Future Locations: {locationPlanned} </h6>
                         
-        <Link to="/locations/collection">
+        <Link to="/locations">
             <button className='btn btn-dark m-2'>See All</button>
         </Link>
         <Link to='/locations/new'>
@@ -49,7 +55,7 @@ export default function Dashboard({ trips, locations }) {
                     </div>
                 </div>
                 <h2>Check out our interactive map below!</h2>
-            <DashMap/>
+        
             </div>
            
         </div>

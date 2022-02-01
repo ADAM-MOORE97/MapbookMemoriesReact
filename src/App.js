@@ -3,7 +3,6 @@ import {Routes, Route} from 'react-router-dom'
 import { UserContext } from './context/user';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
 import LandingPage from './components/LandingPage';
 import Navabar from './components/Navabar';
 import Dashboard from './components/Dashboard';
@@ -44,7 +43,7 @@ function App() {
       <Navabar/>
       <Routes>
         <Route path='/' element={<Dashboard trips={user.trips} locations={user.locations}/>}></Route>
-        <Route path='/locations' element={<LocationCollection/>}></Route>
+        <Route path='/locations' element={<LocationCollection locations={user.locations}/>}></Route>
         <Route path='/locations/new' element={<LocationForm/>}></Route>
         <Route path='/locations/:id/edit' element={<LocationForm/>}></Route>
         <Route path='/locations/:id' element={<LocationDetails/>}></Route>
