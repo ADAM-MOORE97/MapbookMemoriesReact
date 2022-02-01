@@ -1,3 +1,8 @@
+*{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  margin: auto;
+}
+
 .checkmark__circle {
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
@@ -99,29 +104,36 @@
     min-height: 40px;
 }
 
-.Navbar{
-  background-color: #7ac142;
-  width: 100%;
-  height: 80px;
-  font-family: 'Courier New', Courier, monospace;
-  display: flex;
-}
 
-.Navbar .leftSide{
-  flex: 50%;
-  /* background-color: #fff; */
-}
-.Navbar .rightSide{
-flex: 50%;
-/* background-color: aqua; */
-}
 
-.navbar{
-  justify-content: flex-start !important
-}
 
+.mapCenter{
+  width: 90vw;
+  padding: auto;
+  font-size: 60%;
+  text-align: center;
+  padding: none;
+  background-color: cadetblue;
+  color: white;
+  margin: auto;
+}
 .mapboxgl-ctrl-geocoder--input{
 max-width: fit-content;
 
 }
+.space{
+ 
+margin-left: 2em;
+ margin-right: 2em;
 
+
+}
+.dropdown-container{
+  position: relative;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Bottom of button */
+  right: 0;
+max-width: 100%;
+}
