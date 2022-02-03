@@ -13,13 +13,13 @@ export default function Navabar() {
         }).then(setUser());
     };
     return (
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-            <div class="container-fluid">
-                <Link class="nav-link navbar-brand" to="/">| MapBook Memories |</Link>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div className="container-fluid">
+                <Link className="nav-link navbar-brand" to="/">| MapBook Memories |</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <div className="nav-item dropdown navbar-nav me-auto mb-2 mb-lg-0">
                         <Link className="nav-link text-light space" to='/'>Dashboard</Link>
                         <Link className="nav-link text-light dropdown-toggle space" role='button' to="#" data-bs-toggle="dropdown">Locations</Link>

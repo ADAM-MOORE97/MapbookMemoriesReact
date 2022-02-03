@@ -41,6 +41,7 @@ fetch('/locations/new', {
 }).then(res => {
     if (res.ok){
         res.json().then(data=>{
+        
             navigate(`/locations/${data.id}`)
         })
     } else {

@@ -9,7 +9,7 @@ export default function LocationCollection({locations}) {
 if(locations.length > 0){
     return(
         <div className='container-fluid'>
-            <div className='row'>
+            <div className='row mt-2'>
             {locations.map(place=><LocationCard location={place} key={place.id}/>)}
             </div>
 

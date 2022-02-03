@@ -1,8 +1,14 @@
 *{
   font-family:Georgia, 'Times New Roman', Times, serif;
   margin: auto;
+ 
+  
 }
-
+#root{
+  height: 100vh;
+  width: 100vw;
+  
+}
 .checkmark__circle {
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
@@ -99,10 +105,20 @@
 
 .card-footer{
     margin-bottom: 0;
+    padding: 0.25rem 5rem;
+    width:100%;
+    height:100%;
+    text-align: center;
+ 
 }
 .card-subtitle{
     min-height: 40px;
 }
+.card-body{
+  text-align: left;
+margin: 0 !important;
+}
+
 
 
 
@@ -127,6 +143,9 @@ margin-left: 2em;
  margin-right: 2em;
 
 
+}
+.navbar-brand{
+  margin-left: 0pt !important;
 }
 .dropdown-container{
   position: relative;
