@@ -30,7 +30,7 @@ const DashMap = () => {
                 container: mapContainer.current,
                 style:  "mapbox://styles/mapbox/light-v10", // stylesheet location
                 center: [-98.100000, 39.500000],
-                zoom: 3.000
+                zoom: 2.000
             });
             const directions = new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
@@ -53,7 +53,7 @@ const DashMap = () => {
                 setLat(map.getCenter().lat.toFixed(6));
                 setZoom(map.getZoom().toFixed(3));
             });
-      
+   
 
         };
         if(user.locations.length > 0 && map){
@@ -63,8 +63,9 @@ const DashMap = () => {
                 let lat = Number(location.latitude)
                 let marker = new mapboxgl.Marker({color: style, anchor: 'bottom'}).setLngLat([lng, lat]).addTo(map)
                 marker.getElement().id = location.id
-                console.log(marker.getElement())
-         
+                // console.log(marker.getElement())
+                const popup = marker.setPopup(new mapboxgl.Popup().setHTML(`<a className='popup-text'  href='/locations/${location.id}'>${location.custom_name}</a><p>Coordinates: (${location.latitude},${location.longitude})</p>`))
+                
             })
         }
 
@@ -77,8 +78,8 @@ const DashMap = () => {
         <div className="row m-1">
             
             <div ref={el => (mapContainer.current = el)} style={styles} />
-            <div className="mapCenter mt-1">
-                Center: Latitude: {lat} | Longitude: {lng} | Zoom: {zoom}
+            <div className="mapCenter mt-2">
+                <p className=" bg-dark text-light">Center: Latitude: {lat} | Longitude: {lng} | Zoom: {zoom}</p>
             </div>
         
 

@@ -13,7 +13,7 @@ export default function Dashboard({ trips, locations }) {
 
 
     return (
-        <div>
+        <div className='mt-2'>
 
 
 

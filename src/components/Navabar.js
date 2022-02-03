@@ -6,7 +6,7 @@ import { UserContext } from "../context/user";
 export default function Navabar() {
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
-
+  
     const handleLogOut = () => {
         fetch(`/logout`, {
             method: "DELETE",
@@ -15,7 +15,9 @@ export default function Navabar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div className="container-fluid">
+            <i className="bi bi-arrow-bar-left text-light" onClick={()=>navigate(-1)}></i>
                 <Link className="nav-link navbar-brand" to="/">| MapBook Memories |</Link>
+                <i className="bi bi-arrow-bar-right text-light" onClick={()=>navigate(1)}></i>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
