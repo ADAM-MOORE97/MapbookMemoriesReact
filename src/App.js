@@ -12,6 +12,7 @@ import LocationDetails from './components/LocationDetails';
 import TripCollections from './components/TripCollections';
 import TripForm from './components/TripForm';
 import TripDetails from './components/TripDetails';
+import Footer from './components/Footer';
 
 
 
@@ -47,12 +48,12 @@ function App() {
         <Route path='/locations/new' element={<LocationForm/>}></Route>
         <Route path='/locations/:id/edit' element={<LocationForm/>}></Route>
         <Route path='/locations/:id' element={<LocationDetails/>}></Route>
-        <Route path='/trips' element={<TripCollections/>}></Route>
+        <Route path='/trips' element={<TripCollections trips={user.trips}/>}></Route>
         <Route path='/trips/new' element={<TripForm/>}></Route>
         <Route path='/trips/:id/edit' element={<TripForm/>}></Route>
         <Route path='/trips/:id' element={<TripDetails/>}></Route>
       </Routes>
-      
+    <Footer/>
     </div>
   );
 }

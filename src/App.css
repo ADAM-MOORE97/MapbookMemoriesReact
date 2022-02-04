@@ -9,6 +9,7 @@
   width: 100vw;
   background-color: #F5F5F5;
 }
+
 .checkmark__circle {
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
