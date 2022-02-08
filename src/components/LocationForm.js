@@ -70,7 +70,7 @@ fetch('/locations/new', {
     return (
         <div>
             <PlaceFormMap setMapped_Address={setMapped_Address} setPlace_Type={setPlace_Type} setLatitude={setLatitude} setLongitude={setLongitude}/>
-            <form onSubmit={(e)=>handleSubmit(e)} style={{ margin: 'auto', 'maxWidth': '40vw', 'textAlign': 'center' }}>
+            <form onSubmit={(e)=>handleSubmit(e)} className='m-5 text-center' >
 
                 <label className='form-label mt-3'> Custom Name</label>
 
@@ -115,7 +115,7 @@ fetch('/locations/new', {
                 <input  type='checkbox' name="visited" onChange={(e)=>setVisited(e.target.checked)}></input>
 
                     <br></br>
-                <button className='btn btn-dark mt-3'>Submit</button>
+                <button className='btn btn-dark mt-3 '>Submit</button>
 
             </form>
         </div>
