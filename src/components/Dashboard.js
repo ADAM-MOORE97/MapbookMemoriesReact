@@ -13,13 +13,16 @@ export default function Dashboard({ trips, locations }) {
 
 
     return (
-        <div className='mt-2'>
+       
 
 
 
-            <DashMap />
+           
 
-            <div className='container'>
+            <div className='container mt-5'>
+             
+                <DashMap />
+               
                 <div className='row'>
 
                     <div className='col mt-5 border text-center text-light bg-dark'>
@@ -40,7 +43,7 @@ export default function Dashboard({ trips, locations }) {
                     
                 </div>
             </div>
-        </div>
+     
 
 
 

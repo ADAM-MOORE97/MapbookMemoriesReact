@@ -122,10 +122,10 @@ const submitForm = (e) =>{
         )
     }
     return (
-        <div className='container-fluid mt-5'>
+        <div className='container-fluid mt-5 '>
             <div className='row'>
-                <form className='col-8' onSubmit={submitForm}>
-                    <label className='form-label'>Place:</label>
+                <form className='col-8 text-center border' onSubmit={submitForm}>
+                    <label className='form-label mt-3'>Place:</label>
                     <select name='place' className='form-control border-dark' required onChange={(e)=>{
                         setLocationId(e.target.value)
                         console.log(e.target.value)}}>
@@ -133,21 +133,21 @@ const submitForm = (e) =>{
                         {locationOptions.map((place) => <option key={place.id} value={place.id}>{place.custom_name}</option>)}
                         
                     </select>
-                    <label  className='form-label'>Name:</label>
+                    <label  className='form-label mt-3'>Name:</label>
                     <input  className='form-control border-dark' name='name' value={name} onChange={(e) => setName(e.target.value)} placeholder='Trip Name' required></input>
-                    <label  className='form-label'>Start Date:</label>
+                    <label  className='form-label mt-3'>Start Date:</label>
                     <input className='form-control border-dark' type='date' value={start_date} name='start_date' onChange={(e) => setStart_Date(e.target.value)}></input>
-                    <label className='form-label'>End Date:</label>
+                    <label className='form-label mt-3'>End Date:</label>
                     <input className='form-control border-dark' type='date' value={end_date} name='end_date' onChange={(e) => setEnd_Date(e.target.value)}></input>
-                    <label className='form-label'>Trip Description:</label>
+                    <label className='form-label mt-3'>Trip Description:</label>
                     <textarea className='form-control border-dark' name='description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-                    <label className='form-label'>Check if Trip Taken:</label>
+                    <label className='form-label mt-3'>Check if Trip Taken:</label>
                     <input type='checkbox' name='taken' checked={taken} onChange={(e) => setTaken(e.target.checked)}></input>
                     <br></br>
-                    {taken ? <div><label className='form-label'>Trip Images:</label>
+                    {taken ? <div><label className='form-label mt-3'>Trip Images:</label>
                         <input className='form-control border-dark' name='attachments' type='file' accept='image/*' multiple={true} onChange={imageUpload}></input>
                         </div> : null}
-                    <button className='btn btn-dark' type='submit'>Submit</button>
+                    <button className='btn btn-dark mt-3' type='submit'>Submit</button>
                 </form>
 
             </div>

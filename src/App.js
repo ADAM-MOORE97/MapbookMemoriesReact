@@ -12,7 +12,7 @@ import LocationDetails from './components/LocationDetails';
 import TripCollections from './components/TripCollections';
 import TripForm from './components/TripForm';
 import TripDetails from './components/TripDetails';
-import Footer from './components/Footer';
+import Gallery from './components/Gallery';
 
 
 
@@ -27,6 +27,7 @@ function App() {
       .then(resp => {
         if (resp.ok){
           resp.json().then(data=> {setUser(data)
+            console.log(data)
     })
         }
         else {
@@ -52,8 +53,8 @@ function App() {
         <Route path='/trips/new' element={<TripForm/>}></Route>
         <Route path='/trips/:id/edit' element={<TripForm/>}></Route>
         <Route path='/trips/:id' element={<TripDetails/>}></Route>
+        <Route path='/trips/gallery' element={<Gallery/>}></Route>
       </Routes>
-    <Footer/>
     </div>
   );
 }

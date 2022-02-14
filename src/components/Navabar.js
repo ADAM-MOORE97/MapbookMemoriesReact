@@ -38,7 +38,7 @@ export default function Navabar() {
                         </ul>
                         <Link className="nav-link text-light dropdown-toggle space" role='button' to="#" data-bs-toggle="dropdown">Trips</Link>
                         <ul className="dropdown-menu dowpdown-menu-end mt-2">
-                            <Link className="nav-link text-dark dropdown-item" to='/'>
+                            <Link className="nav-link text-dark dropdown-item" to='/trips/gallery'>
                                 Gallery
                             </Link>
                             <Link className="nav-link text-dark dropdown-item" to='/trips'>

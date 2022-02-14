@@ -5,14 +5,12 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 const styles = {
-    width: "80vw",
+    width: "90vw",
     height: "50vh",
-    margin: 'auto',
-   
-    border: "5px solid",
-    position: 'relative',
-    
-    
+  margin: 'auto',
+    padding: '5em',
+    border: "5px solid"
+  
   };
 
 export default function PlaceFormMap({setMapped_Address, setPlace_Type, setLatitude, setLongitude}) {
@@ -24,12 +22,13 @@ export default function PlaceFormMap({setMapped_Address, setPlace_Type, setLatit
     const [zoom, setZoom] = useState(3.000);
 
 
+
     useEffect(() => {
         mapboxgl.accessToken = process.env.REACT_APP_MAP_API;
         const initializeMap = ({ setMap, mapContainer }) => {
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
-                style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
+                style: 'mapbox://styles/mapbox/light-v10', // stylesheet location
                 center: [-98.100000, 39.500000],
                 zoom: 3.000
             });
@@ -71,13 +70,13 @@ export default function PlaceFormMap({setMapped_Address, setPlace_Type, setLatit
 
 
     return (
-        <div className="row">
-        <div className="sidebar text center col-xs-3">
-            Center Of Map: Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-        </div>
+        <div className="row m-1">
+            
         <div ref={el => (mapContainer.current = el)} style={styles} />
         
-    
+            <p className="mapCenter mt-2 bg-dark text-light">Center: Latitude: {lat} | Longitude: {lng} | Zoom: {zoom}</p>
+        
+       
 
     </div>
     )

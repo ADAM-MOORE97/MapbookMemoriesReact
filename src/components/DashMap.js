@@ -78,9 +78,9 @@ const DashMap = () => {
         <div className="row m-1">
             
             <div ref={el => (mapContainer.current = el)} style={styles} />
-            <div className="mapCenter mt-2">
-                <p className=" bg-dark text-light">Center: Latitude: {lat} | Longitude: {lng} | Zoom: {zoom}</p>
-            </div>
+            
+                <p className="mapCenter mt-2 bg-dark text-light">Center: Latitude: {lat} | Longitude: {lng} | Zoom: {zoom}</p>
+            
         
 
         </div>
