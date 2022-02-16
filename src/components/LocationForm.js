@@ -68,7 +68,7 @@ export default function LocationForm() {
     }
 
     return (
-        <div>
+        <div className='container mt-5'>
             <PlaceFormMap setMapped_Address={setMapped_Address} setPlace_Type={setPlace_Type} setLatitude={setLatitude} setLongitude={setLongitude} />
 
             <div >
