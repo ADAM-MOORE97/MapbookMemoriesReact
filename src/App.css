@@ -190,3 +190,9 @@ max-width: 100%;
 
   max-width: 150px;
 }
+.imgcards{
+  min-width: 20vw;
+  min-height: 20vh;
+  max-width: 25vw;
+  max-height: 25vh;
+}
