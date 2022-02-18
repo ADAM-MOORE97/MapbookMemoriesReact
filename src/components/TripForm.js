@@ -33,6 +33,7 @@ export default function TripForm({setTripData}) {
                 .then(res => {
                     if (res.ok) {
                         res.json().then(data => {
+                            console.log(data)
                             setName(data.name)
                             setStart_Date(data.start_date)
                             setEnd_Date(data.end_date)
@@ -42,12 +43,12 @@ export default function TripForm({setTripData}) {
                             setAttachments({
                                 attachments: data.attachment_urls
                             })
-                         
+                         console.log(data)
                             fetch(`/locations/${data.location_id}`)
                             .then(r => r.json())
                             .then(data => {
                                 console.log(data)
-                                setLocationOptions(data)
+                                setLocationOptions([data])
                             
     
                                    

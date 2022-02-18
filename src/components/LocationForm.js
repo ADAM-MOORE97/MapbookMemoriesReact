@@ -71,7 +71,7 @@ useEffect(() =>{
                 })
             } else {
                 res.json().then(data => {
-                    console.log(data.erros)
+                    console.log(data.errors)
                     let custom = data.errors.filter(error => error.includes('Custom'))
                     let mapped = data.errors.filter(error => error.includes('Mapped'))
                     let place = data.errors.filter(error => error.includes('Place'))
