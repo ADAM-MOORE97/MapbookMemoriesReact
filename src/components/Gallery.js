@@ -30,7 +30,7 @@ export default function Gallery() {
 
     }
     return (
-        <div>
+        <div className='justify-content-center'>
             <div className='w-75 flex'>
                 <form onSubmit={handleSubmit} className="text-center">
                     <input
@@ -43,7 +43,7 @@ export default function Gallery() {
                     />
                 </form>
             </div>
-            <div>
+            <div className='container'>
                 {filteredTrip.map((trip)=>{
                     return <ImageCard className="mt-2" key={trip.id} trip={trip}/>
                 })}
