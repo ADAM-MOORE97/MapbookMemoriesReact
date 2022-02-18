@@ -4,6 +4,7 @@ import ImageCard from './ImageCard';
 export default function Gallery() {
     const [tripData, setTripData] = useState([])
     const [filteredTrip, setFilteredTrip] = useState([])
+
     useEffect(() => {
         fetch('/trips')
             .then(res => {
@@ -34,7 +35,7 @@ export default function Gallery() {
             <div className='w-75 flex'>
                 <form onSubmit={handleSubmit} className="text-center">
                     <input
-                        className="form-control me-2 "
+                        className="form-control me-2 border-dark"
                         role="search"
                         type="search"
                         placeholder="Search by trip name "
@@ -44,8 +45,8 @@ export default function Gallery() {
                 </form>
             </div>
             <div className='container'>
-                {filteredTrip.map((trip)=>{
-                    return <ImageCard className="mt-2" key={trip.id} trip={trip}/>
+                {filteredTrip.map((trip) => {
+                    return <ImageCard image_urls={trip.attachment_urls} key={trip.id} trip={trip} />
                 })}
             </div>
 

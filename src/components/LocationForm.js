@@ -3,7 +3,7 @@ import { UserContext } from '../context/user';
 import { useParams, useNavigate } from "react-router-dom";
 import PlaceFormMap from './PlaceFormMap';
 
-export default function LocationForm() {
+export default function LocationForm({setLocationData}) {
     // Current User
     const { user, setUser } = useContext(UserContext);
 
@@ -21,7 +21,32 @@ export default function LocationForm() {
     const [visited, setVisited] = useState(false)
     // Error handling
     const [errors, setErrors] = useState(false)
+    const [fetchError, setFetchError] = useState(false)
 
+useEffect(() =>{
+    if(params.id){
+        fetch(`/locations/${params.id}`)
+        .then(res=>{
+            if(res.ok){
+                res.json().then(data =>{
+                    setCustom_Name(data.custom_name)
+                    setMapped_Address(data.mapped_address)
+                    setPlace_Type(data.place_type)
+                    setLatitude(data.latitude)
+                    setLongitude(data.longitude)
+                    setDescription(data.description)
+                    setVisited(data.visited)
+                })
+            } else{
+                res.json().then(data=>{
+                    console.log(data)
+                    setFetchError(data.errors.toString().substring(0,22))
+                })
+                setTimeout(()=>navigate('/'), 3000)
+            }
+        })
+    }
+},[])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,18 +60,18 @@ export default function LocationForm() {
         locationInfo.append('visited', visited)
         // locationInfo.append('user_id', user.id)
 
-        fetch('/locations/new', {
-            method: 'POST',
+        fetch(params.id? `/locations/${params.id}`:'/locations', {
+            method: params.id? 'PATCH':'POST',
             body: locationInfo
         }).then(res => {
             if (res.ok) {
                 res.json().then(data => {
-
+                    setLocationData(data)
                     navigate(`/locations/${data.id}`)
                 })
             } else {
                 res.json().then(data => {
-                    // console.log(data)
+                    console.log(data.erros)
                     let custom = data.errors.filter(error => error.includes('Custom'))
                     let mapped = data.errors.filter(error => error.includes('Mapped'))
                     let place = data.errors.filter(error => error.includes('Place'))
@@ -66,7 +91,13 @@ export default function LocationForm() {
             }
         })
     }
-
+if(fetchError){
+    return(
+        <div>
+        <h3 className="alert-danger m-1">Status: 404, {fetchError} within your saved data, navigating back to your Dashboard...</h3>
+    </div>
+    )
+}
     return (
         <div className='container mt-5'>
             <PlaceFormMap setMapped_Address={setMapped_Address} setPlace_Type={setPlace_Type} setLatitude={setLatitude} setLongitude={setLongitude} />
@@ -114,7 +145,7 @@ export default function LocationForm() {
 
                     <label className='form-label mt-3'>Visited </label>
                     <br></br>
-                    <input className='border-dark visitbox' type='checkbox' name="visited" onChange={(e) => setVisited(e.target.checked)}></input>
+                    <input className='border-dark visitbox' type='checkbox' checked={visited} name="visited" onChange={(e) => setVisited(e.target.checked)}></input>
 
                     <br></br>
                     <button className='btn btn-dark mt-3 '>Submit</button>
