@@ -12,6 +12,8 @@ const handleclick = (url) =>{
 
 return(
     <div className='row mt-2 justify-content-center mx-auto border-bottom p-4 border-dark'>
+    <h2 className='text-center'>{trip.name}</h2>
+    <h3 className='text-center'>{trip.start_date.substring(5,11)} to {trip.end_date.substring(5,11)}</h3>
     {image_urls.map(url=>{
         return(
             <div key={trip.attachment_url} className='col-3 card p-2 m-2 border-dark'>
