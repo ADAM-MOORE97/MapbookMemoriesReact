@@ -139,7 +139,7 @@ if(fetchError){
 
                     <label className='form-label mt-3'>Description</label>
 
-                    <input className='form-control border-dark' type='text' name='description' value={description} onChange={(e) => setDescription(e.target.value)}></input>
+                    <textarea className='form-control border-dark' type='text' name='description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     {errors ? errors.description.map(error => <p className="alert-danger m-1">*{error}.</p>) : null}
 
 

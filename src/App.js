@@ -42,7 +42,7 @@ function App() {
   else
   
   return (
-    <div>
+    <div className='vh-100'>
       <Navabar/>
       <Routes>
         <Route path='/' element={<Dashboard trips={user.trips} locations={user.locations}/>}></Route>

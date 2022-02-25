@@ -1,7 +1,7 @@
 *{
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Playfair Display SC', serif;
   margin: auto;
- 
+
   
 }
 #root{
@@ -9,7 +9,7 @@
   width: 100vw;
   position: relative;
   margin-bottom: 5rem;
-  /* background-color: #F5F5F5; */
+
 }
 form{
   padding: 2rem;

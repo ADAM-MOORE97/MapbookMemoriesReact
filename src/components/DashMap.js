@@ -14,13 +14,13 @@ const styles = {
   
   };
 
-const DashMap = () => {
+const DashMap = ({latitude = 39.500000, longitude = -98.100000, magnify = 2.000 }) => {
     const { user, setUser } = useContext(UserContext);
     const [map, setMap] = useState(null);
     const mapContainer = useRef(null);
-    const [lng, setLng] = useState(-98.100000);
-    const [lat, setLat] = useState(39.500000);
-    const [zoom, setZoom] = useState(3.000);
+    const [lng, setLng] = useState(longitude);
+    const [lat, setLat] = useState(latitude);
+    const [zoom, setZoom] = useState(magnify);
 
 
     useEffect(() => {
@@ -29,8 +29,8 @@ const DashMap = () => {
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
                 style:  "mapbox://styles/mapbox/light-v10", // stylesheet location
-                center: [-98.100000, 39.500000],
-                zoom: 2.000
+                center: [longitude, latitude],
+                zoom: magnify
             });
             const directions = new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,

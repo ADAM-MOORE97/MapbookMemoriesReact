@@ -16,9 +16,9 @@ export default function Navabar() {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div className="container-fluid">
                 <div className="nav-link navbar-brand">
-                <i className="bi bi-arrow-bar-left text-light m-1" onClick={()=>navigate(-1)}></i>
+                <i role='button' className="bi bi-arrow-bar-left text-light" onClick={()=>navigate(-1)}></i>
                 <Link className="text-light" to="/">MapBook Memories</Link>
-                <i className="bi bi-arrow-bar-right text-light m-1" onClick={()=>navigate(1)}></i>
+                <i role='button' className="bi bi-arrow-bar-right text-light" onClick={()=>navigate(1)}></i>
                 </div>
            
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
