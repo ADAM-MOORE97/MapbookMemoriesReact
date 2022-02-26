@@ -19,6 +19,7 @@ export default function Signup() {
 
     }
     // console.log(`${process.env.REACT_APP_BACKEND_URL}/signup`)
+    // Add New User to the Database and Backend.
     const handleSubmit = (e) => {
         e.preventDefault();
         fetch(`/signup`, {
@@ -48,9 +49,10 @@ export default function Signup() {
         })
     }
     return (
+        // Render for for New User to be added to backend with error handling.
         <div>
 
-            <form onSubmit={(e) => handleSubmit(e)} style={{ margin: 'auto', 'maxWidth': '800px', 'textAlign': 'center' }}>
+            <form onSubmit={(e) => handleSubmit(e)} style={{ margin: 'auto', 'maxWidth': '800px', 'textAlign': 'center', "fontFamily": 'Georgia' }}>
 
                 <label className='form-label mt-3'>Username</label>
 

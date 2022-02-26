@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function TripCard({trip}) {
-
+// Render animation conditional to whether trip was 'taken' or not.
     const navigate = useNavigate();
     let visitAnimation = <svg className={trip.taken ? "checkmark" : "xmark"} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
         <circle className={trip.taken ? "checkmark__circle" : "xmark"} cx="26" cy="26" r="25" fill="none" />
@@ -11,6 +11,7 @@ export default function TripCard({trip}) {
     </svg>
 
     return (
+    // Render Trip cards for Collection.
         <div className='col d-flex m-2'>
         <div className='card flex-fill border-dark'>
             <div className='card-body'>

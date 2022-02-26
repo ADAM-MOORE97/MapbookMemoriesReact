@@ -22,8 +22,11 @@ export default function LocationForm({setLocationData}) {
     // Error handling
     const [errors, setErrors] = useState(false)
     const [fetchError, setFetchError] = useState(false)
+    // Help Message
+    const [help, setHelp] = useState(false)
 
 useEffect(() =>{
+    // Conditionally render Location info for updating data into form.
     if(params.id){
         fetch(`/locations/${params.id}`)
         .then(res=>{
@@ -58,8 +61,8 @@ useEffect(() =>{
         locationInfo.append('longitude', longitude)
         locationInfo.append('description', description)
         locationInfo.append('visited', visited)
-        // locationInfo.append('user_id', user.id)
-
+       
+// Conditionally add or update form given circumstance of component.
         fetch(params.id? `/locations/${params.id}`:'/locations', {
             method: params.id? 'PATCH':'POST',
             body: locationInfo
@@ -91,6 +94,12 @@ useEffect(() =>{
             }
         })
     }
+
+const helpMessage = () =>{
+    setHelp(true)
+    setTimeout(()=>setHelp(false), 10000)
+}
+
 if(fetchError){
     return(
         <div>
@@ -99,9 +108,13 @@ if(fetchError){
     )
 }
     return (
+        // Add interactive map, error messages, help messages, and form usability for communication with backend.
         <div className='container mt-5'>
             <PlaceFormMap setMapped_Address={setMapped_Address} setPlace_Type={setPlace_Type} setLatitude={setLatitude} setLongitude={setLongitude} />
-
+            <div className='text-center'>
+            <i role='button' className="bi bi-info-circle m-1" onClick={helpMessage}></i>
+            {help? <p className='alert-dark m-1'>Search for a Location using the Map and appropriate fields will be filled. Remaining fields are customizable at the user's discretion. Thank you, and enjoy! </p>: null}
+            </div>
             <div >
                 <form onSubmit={(e) => handleSubmit(e)} className=' border m-5 text-center' >
 

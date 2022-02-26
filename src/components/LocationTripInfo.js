@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function ({ trips }) {
 const navigate = useNavigate();
-
+// Add small detail trip info for Location Details, and navigation to clicked on Trip Details.
     return(
         <>
     {trips.map(trip=>

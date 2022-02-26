@@ -1,11 +1,8 @@
-import react, { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../context/user';
-import { Link } from 'react-router-dom'
 import DashMap from './DashMap';
 
 export default function Dashboard({ trips, locations }) {
-    const { user, setUser } = useContext(UserContext);
-    console.log(user)
+
+
     let tripTaken = trips.length > 0 ? trips.filter(trip => trip.taken === true).length : 0
     let tripPlanned = trips.length > 0 ? trips.filter(trip => trip.taken === false).length : 0
     let locationVisited = locations.length > 0 ? locations.filter(location => location.visited === true).length : 0

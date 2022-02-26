@@ -22,7 +22,7 @@ export default function PlaceFormMap({setMapped_Address, setPlace_Type, setLatit
     const [zoom, setZoom] = useState(3.000);
 
 
-
+// Render interactive map to search for Locations through MapBox API and render information to Location Form.
     useEffect(() => {
         mapboxgl.accessToken = process.env.REACT_APP_MAP_API;
         const initializeMap = ({ setMap, mapContainer }) => {
@@ -42,7 +42,7 @@ export default function PlaceFormMap({setMapped_Address, setPlace_Type, setLatit
             map.addControl(directions, 'top-right')
             directions.on('result', (e)=>{
             
-               console.log(e)
+            
                     setMapped_Address(e.result.place_name)
                     setPlace_Type(e.result.place_type[0])
                     setLatitude(e.result.geometry.coordinates[1])

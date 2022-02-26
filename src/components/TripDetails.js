@@ -12,7 +12,7 @@ export default function TripDetails() {
     const [error, setError] = useState(false)
     const [showImg, setShowImg] = useState(false)
     const [showLocation, setShowLocation] = useState(false)
-
+    // fetch specified trip data given id.
     useEffect(() => {
         fetch(`/trips/${params.id}`)
             .then(res => {
@@ -37,7 +37,8 @@ export default function TripDetails() {
                     }, 5000)
                 }
             })
-    }, [])
+    }, [params.id, navigate])
+    // Render error message of Fetch for requested Trip data fails.
     if (error || !tripDetails) {
 
         return (
@@ -47,13 +48,13 @@ export default function TripDetails() {
         )
     }
     return (
-
+        // Render Trip Details
         <div className='vh-75'>
 
 
 
-     
-           
+
+
             <div className='border-bottom border-dark mt-2 col-10 text-center p-4'>
                 <div className='bg-light rounded border'>
                     <h1>{tripDetails.name}</h1>
@@ -63,14 +64,14 @@ export default function TripDetails() {
                     <em>{tripDetails.description} <i className="bi bi-pen"></i></em>
                 </div>
 
-                {tripDetails.attachment_urls.length > 0 ? <div><button className='btn btn-dark' onClick={() => setShowImg(!showImg)}>Show Images</button> <button className='btn btn-dark m-1' onClick={() => setShowLocation(!showLocation)}>Show Location Info</button><button className='btn btn-dark' onClick={()=>navigate(`/trips/${tripDetails.id}/edit`)}>Edit Trip</button></div> : <div><button onClick={() => setShowLocation(!showLocation)}>Show Location Info</button><button className='btn btn-dark' onClick={()=>navigate(`/trips/${tripDetails.id}/edit`)}>Edit Trip</button></div>}
+                {tripDetails.attachment_urls.length > 0 ? <div><button className='btn btn-dark' onClick={() => setShowImg(!showImg)}>Show Images</button> <button className='btn btn-dark m-1' onClick={() => setShowLocation(!showLocation)}>Show Location Info</button><button className='btn btn-dark' onClick={() => navigate(`/trips/${tripDetails.id}/edit`)}>Edit Trip</button></div> : <div><button onClick={() => setShowLocation(!showLocation)}>Show Location Info</button><button className='btn btn-dark' onClick={() => navigate(`/trips/${tripDetails.id}/edit`)}>Edit Trip</button></div>}
             </div>
             {showLocation ? <div className=' col-10 border-dark border-bottom mt-2 p-4'> <DashMap latitude={locationDetails.latitude} longitude={locationDetails.longitude} magnify={4.5} /> </div> : null}
             {showImg ? <div className='container col-10 mt-2'> <ImageCard gallery={false} image_urls={tripDetails.attachment_urls} key={tripDetails.id} trip={tripDetails} /></div> : null}
-            </div>
+        </div>
 
 
-      
+
 
     )
 }

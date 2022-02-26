@@ -6,13 +6,14 @@ import { UserContext } from "../context/user";
 export default function Navabar() {
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
-  
+
     const handleLogOut = () => {
         fetch(`/logout`, {
             method: "DELETE",
         }).then(setUser());
     };
     return (
+        // Render responsive Navbar for all routes within webpage, Navbar will be fixed to top of application regardless of Components.
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div className="container-fluid">
                 <div className="nav-link navbar-brand">

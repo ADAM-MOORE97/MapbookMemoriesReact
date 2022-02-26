@@ -24,9 +24,8 @@ export default function TripForm({setTripData}) {
     // error handling
     const [error, setError]=useState(false)
     const [submitErrors, setSubmitErrors] =useState(false)
-
+    const [help, setHelp] = useState(false)
     // Condition fetch with params
-
     useEffect(() => {
         if (params.id) {
             fetch(`/trips/${params.id}`)
@@ -70,7 +69,6 @@ export default function TripForm({setTripData}) {
                 if(res.ok){
                     res.json().then(data=>{
                         setLocationOptions(data)
-                        console.log(data)
                     })
                 } else{
                     res.json().then(data=>{
@@ -80,12 +78,13 @@ export default function TripForm({setTripData}) {
                 }
             })
         }
-    },[])
+    },[setUser, navigate, params.id])
     const imageUpload = (e) =>{
         setAttachments({
             attachments: [...e.target.files]
         })
     }
+
 const submitForm = (e) =>{
     e.preventDefault();
     const form = e.target
@@ -127,12 +126,16 @@ const submitForm = (e) =>{
             })
             setTimeout(()=>setSubmitErrors(false), 10000)
             })
+            console.log(attachments)
         }
     })
 }
 
 
-
+const helpMessage = () =>{
+    setHelp(true)
+    setTimeout(()=>setHelp(false), 7000)
+}
 
 
 
@@ -147,14 +150,17 @@ const submitForm = (e) =>{
         <div className='container-fluid mt-5 '>
             <div className='row'>
                 <form className='col-8 text-center border' onSubmit={submitForm}>
+                {locationOptions.length>0? null: <i role='button' className="bi bi-info-circle m-1" onClick={helpMessage}></i>}
                     <label className='form-label mt-3'>Place:</label>
                     <select name='place' className='form-control border-dark' required onChange={(e)=>{
                         setLocationId(e.target.value)
                         console.log(e.target.value)}}>
-                        <option value="Select a Place"> -- Select a Place -- </option>
+                        
+                        <option> -- Select a Place -- </option>
                         {locationOptions.map((place) => <option key={place.id} value={place.id}>{place.custom_name}</option>)}
                         
                     </select>
+                    {help? <p className='alert-dark m-1'>It appears that you have no locations added at this time. Click <em className='bg-danger' role='button' onClick={()=>navigate(`/locations/new`)}>here</em> to add one!</p>: null}
                     {submitErrors ? submitErrors.location.map(error => <p className="alert-danger m-1">*{error}.</p>) : null}
                     <label  className='form-label mt-3'>Name:</label>
                     <input  className='form-control border-dark' name='name' value={name} onChange={(e) => setName(e.target.value)} placeholder='Trip Name'></input>

@@ -14,6 +14,7 @@ import TripForm from './components/TripForm';
 import TripDetails from './components/TripDetails';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer';
+import About from './components/About';
 
 
 
@@ -36,7 +37,12 @@ function App() {
         }})
       }, [tripData, locationData])
 
-
+      const handleLogOut = () => {
+        fetch(`/logout`, {
+            method: "DELETE",
+        }).then(setUser());
+    };
+    
   if(!user)
     return( <LandingPage/>)
   else
@@ -46,6 +52,7 @@ function App() {
       <Navabar/>
       <Routes>
         <Route path='/' element={<Dashboard trips={user.trips} locations={user.locations}/>}></Route>
+        <Route path='/about' element={<About/>}></Route>
         <Route path='/locations' element={<LocationCollection locations={user.locations}/>}></Route>
         <Route path='/locations/new' element={<LocationForm setLocationData={setLocationData}/>}></Route>
         <Route path='/locations/:id/edit' element={<LocationForm setLocationData={setLocationData}/>}></Route>

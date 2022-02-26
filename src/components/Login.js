@@ -12,6 +12,7 @@ export default function Login() {
         setUserLogin({...userLogin, [e.target.name]:e.target.value})
     }
     // console.log(process.env.REACT_APP_BACKEND_URL)
+    // Login and begin current_user session.
     const handleSubmit = (e) =>{
         e.preventDefault();
         fetch(`/login`,{
@@ -32,8 +33,9 @@ export default function Login() {
         })
     }
     return (
+        // render login form.
         <div>
-            <form onSubmit={handleSubmit} style={{margin: 'auto', 'maxWidth': '800px', 'textAlign': 'center'}}>
+            <form onSubmit={handleSubmit} style={{margin: 'auto', 'maxWidth': '800px', 'textAlign': 'center', "fontFamily": 'Georgia'}}>
 
                 <label className='form-label mt-3'>Username:</label>
 
