@@ -33,7 +33,9 @@ function App() {
     })
         }
         else {
-          resp.json().then(errors=> console.log(errors))
+          resp.json().then(errors=> 
+            console.log(errors)
+          )
         }})
       }, [tripData, locationData])
 
