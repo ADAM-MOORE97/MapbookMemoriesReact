@@ -28,7 +28,7 @@ export default function LocationForm({setLocationData}) {
 useEffect(() =>{
     // Conditionally render Location info for updating data into form.
     if(params.id){
-        fetch(`/locations/${params.id}`)
+        fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${params.id}`)
         .then(res=>{
             if(res.ok){
                 res.json().then(data =>{
@@ -63,7 +63,7 @@ useEffect(() =>{
         locationInfo.append('visited', visited)
        
 // Conditionally add or update form given circumstance of component.
-        fetch(params.id? `/locations/${params.id}`:'/locations', {
+        fetch(params.id? `https://mapbook-memories-backend.herokuapp.com/locations/${params.id}`:'https://mapbook-memories-backend.herokuapp.com/locations', {
             method: params.id? 'PATCH':'POST',
             body: locationInfo
         }).then(res => {

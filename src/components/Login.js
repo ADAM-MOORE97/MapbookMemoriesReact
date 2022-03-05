@@ -17,13 +17,14 @@ export default function Login() {
         e.preventDefault();
         fetch(`/login`,{
             method: "POST",
-            headers: {
-                "Content-Type" : "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(userLogin)
         }).then(res=>{
             if(res.ok){
-                res.json().then(data => setUser(data))
+                res.json().then(data => {
+                    console.log(data)
+                    setUser(data)})
             } else{
                 res.json().then(data => {
                     setErrors(data.errors.slice(0))

@@ -16,7 +16,7 @@ export default function LocationDetails() {
 
     // Fetch specified Location data, or render usable error message for user.
     useEffect(() => {
-        fetch(`/locations/${params.id}`)
+        fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${params.id}`)
             .then(res => {
                 if (res.ok) {
                     res.json().then(data => {

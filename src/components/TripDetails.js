@@ -14,13 +14,13 @@ export default function TripDetails() {
     const [showLocation, setShowLocation] = useState(false)
     // fetch specified trip data given id.
     useEffect(() => {
-        fetch(`/trips/${params.id}`)
+        fetch(`https://mapbook-memories-backend.herokuapp.com/trips/${params.id}`)
             .then(res => {
                 if (res.ok) {
                     res.json().then(data => {
                         console.log(data)
                         setTripDetails(data)
-                        fetch(`/locations/${data.location_id}`)
+                        fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${data.location_id}`)
                             .then(r => r.json())
                             .then(data => setLocationDetails(data))
                     })

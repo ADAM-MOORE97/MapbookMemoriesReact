@@ -28,7 +28,7 @@ export default function TripForm({setTripData}) {
     // Condition fetch with params
     useEffect(() => {
         if (params.id) {
-            fetch(`/trips/${params.id}`)
+            fetch(`https://mapbook-memories-backend.herokuapp.com/trips/${params.id}`)
                 .then(res => {
                     if (res.ok) {
                         res.json().then(data => {
@@ -43,7 +43,7 @@ export default function TripForm({setTripData}) {
                                 attachments: data.attachment_urls
                             })
                          console.log(data)
-                            fetch(`/locations/${data.location_id}`)
+                            fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${data.location_id}`)
                             .then(r => r.json())
                             .then(data => {
                                 console.log(data)
@@ -64,7 +64,7 @@ export default function TripForm({setTripData}) {
                     }
                 })
         } else{
-            fetch('/locations')
+            fetch('https://mapbook-memories-backend.herokuapp.com/locations')
             .then(res=>{
                 if(res.ok){
                     res.json().then(data=>{
@@ -100,7 +100,7 @@ const submitForm = (e) =>{
     if(taken) for(let i = 0; i < form.attachments.files.length; i++){
         formData.append("attachments[]", form.attachments.files[i])
     }
-    fetch(params.id? `/trips/${params.id}` : '/trips' , {
+    fetch(params.id? `https://mapbook-memories-backend.herokuapp.com/trips/${params.id}` : '/trips' , {
         method: params.id? 'PATCH' : 'POST',
         body: formData
     }).then(res=>{

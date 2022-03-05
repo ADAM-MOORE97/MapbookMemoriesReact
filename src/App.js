@@ -25,7 +25,7 @@ function App() {
   const [tripData, setTripData] = useState([])
 // console.log(`${process.env.REACT_APP_BACKEND_URL}/authenticate`)
   useEffect(() => {
-    fetch(`/authenticate`)
+    fetch(`/authenticate`,{credentials: 'include'})
       .then(resp => {
         if (resp.ok){
           resp.json().then(data=> {setUser(data)
@@ -37,12 +37,7 @@ function App() {
         }})
       }, [tripData, locationData])
 
-      const handleLogOut = () => {
-        fetch(`/logout`, {
-            method: "DELETE",
-        }).then(setUser());
-    };
-    
+     
   if(!user)
     return( <LandingPage/>)
   else

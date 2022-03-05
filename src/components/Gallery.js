@@ -8,7 +8,7 @@ export default function Gallery() {
     const [filteredTrip, setFilteredTrip] = useState([])
     const navigate = useNavigate();
     useEffect(() => {
-        fetch('/trips')
+        fetch('https://mapbook-memories-backend.herokuapp.com/trips')
             .then(res => {
                 if (res.ok) {
                     res.json().then(data => {
