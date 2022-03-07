@@ -63,7 +63,7 @@ useEffect(() =>{
         locationInfo.append('visited', visited)
        
 // Conditionally add or update form given circumstance of component.
-        fetch(params.id? `https://mapbook-memories-backend.herokuapp.com/locations/${params.id}`:'https://mapbook-memories-backend.herokuapp.com/locations', {
+        fetch(params.id? `locations/${params.id}`:'/locations', {
             method: params.id? 'PATCH':'POST',
             body: locationInfo
         }).then(res => {
@@ -75,6 +75,12 @@ useEffect(() =>{
             } else {
                 res.json().then(data => {
                     console.log(data.errors)
+                    console.log(data)
+                    // if(data.errors.filter(error=>error.includes('Logged'))){
+                        
+                    //     setTimeout(()=>setUser(!user), 5000)
+                    // }
+                    let logged = data.errors.filter(error=>error.includes('Logged'))
                     let custom = data.errors.filter(error => error.includes('Custom'))
                     let mapped = data.errors.filter(error => error.includes('Mapped'))
                     let place = data.errors.filter(error => error.includes('Place'))
@@ -87,7 +93,8 @@ useEffect(() =>{
                         place: place,
                         description: description,
                         latitude: latitude,
-                        longitude: longitude
+                        longitude: longitude,
+                        logged: logged
                     })
                     setTimeout(() => setErrors(false), 10000)
                 })
@@ -116,6 +123,7 @@ if(fetchError){
             {help? <p className='alert-dark m-1'>Search for a Location using the Map and appropriate fields will be filled. Remaining fields are customizable at the user's discretion. Thank you, and enjoy! </p>: null}
             </div>
             <div >
+            {errors? errors.logged.map(error => <p className="alert-danger m-1">*{error}. Session expired, routing back to Login Page...</p>) : null}
                 <form onSubmit={(e) => handleSubmit(e)} className=' border m-5 text-center' >
 
                     <label className='form-label mt-3'> Custom Name</label>

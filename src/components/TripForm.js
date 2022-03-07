@@ -28,7 +28,7 @@ export default function TripForm({setTripData}) {
     // Condition fetch with params
     useEffect(() => {
         if (params.id) {
-            fetch(`https://mapbook-memories-backend.herokuapp.com/trips/${params.id}`)
+            fetch(`trips/${params.id}`)
                 .then(res => {
                     if (res.ok) {
                         res.json().then(data => {
@@ -43,7 +43,7 @@ export default function TripForm({setTripData}) {
                                 attachments: data.attachment_urls
                             })
                          console.log(data)
-                            fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${data.location_id}`)
+                            fetch(`/locations/${data.location_id}`)
                             .then(r => r.json())
                             .then(data => {
                                 console.log(data)
@@ -57,14 +57,14 @@ export default function TripForm({setTripData}) {
                         res.json().then(data=>{
                             setError(data.errors.toString().substring(0,18))
                         })
-                        setTimeout(()=>{
-                            setError('')
-                            navigate('/')
-                        }, 5000)
+                        // setTimeout(()=>{
+                        //     setError('')
+                        //     navigate('/')
+                        // }, 5000)
                     }
                 })
         } else{
-            fetch('https://mapbook-memories-backend.herokuapp.com/locations')
+            fetch('/locations')
             .then(res=>{
                 if(res.ok){
                     res.json().then(data=>{
@@ -73,12 +73,12 @@ export default function TripForm({setTripData}) {
                 } else{
                     res.json().then(data=>{
                         console.log({data})
-                        navigate('/')
+                        
                     })
                 }
             })
         }
-    },[setUser, navigate, params.id])
+    },[])
     const imageUpload = (e) =>{
         setAttachments({
             attachments: [...e.target.files]
@@ -100,7 +100,7 @@ const submitForm = (e) =>{
     if(taken) for(let i = 0; i < form.attachments.files.length; i++){
         formData.append("attachments[]", form.attachments.files[i])
     }
-    fetch(params.id? `https://mapbook-memories-backend.herokuapp.com/trips/${params.id}` : '/trips' , {
+    fetch(params.id? `/trips/${params.id}` : '/trips' , {
         method: params.id? 'PATCH' : 'POST',
         body: formData
     }).then(res=>{
@@ -111,22 +111,25 @@ const submitForm = (e) =>{
             })
         } else{
             res.json().then(data=>{
-                console.log(data)
-            let name = data.filter(error=> error.includes('Name'))
-            let start = data.filter(error=> error.includes('Start'))
-            let end = data.filter(error=> error.includes('End'))
-            let description = data.filter(error=> error.includes('Description'))
-            let location = data.filter(error=> error.includes('Location'))
+            console.log(data)
+            let logged = data.errors.filter(error=>error.includes('Logged'))
+            let name = data.errors.filter(error=> error.includes('Name'))
+            let start = data.errors.filter(error=> error.includes('Start'))
+            let end = data.errors.filter(error=> error.includes('End'))
+            let description = data.errors.filter(error=> error.includes('Description'))
+            let location = data.errors.filter(error=> error.includes('Location'))
+          console.log(data)
             setSubmitErrors({
                 name: name,
                 start: start,
                 end:end,
                 description:description,
-                location:location
+                location:location,
+                logged: logged
             })
             setTimeout(()=>setSubmitErrors(false), 10000)
             })
-            console.log(attachments)
+            
         }
     })
 }
@@ -149,6 +152,7 @@ const helpMessage = () =>{
     return (
         <div className='container-fluid mt-5 '>
             <div className='row'>
+            {submitErrors? submitErrors.logged.map(error => <p className="alert-danger m-1">*{error}. Session expired, routing back to Login Page...</p>) : null}
                 <form className='col-8 text-center border' onSubmit={submitForm}>
                 {locationOptions.length>0? null: <i role='button' className="bi bi-info-circle m-1" onClick={helpMessage}></i>}
                     <label className='form-label mt-3'>Place:</label>
