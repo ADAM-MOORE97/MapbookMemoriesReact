@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from "../context/user";
 import ImageCard from './ImageCard';
 import { useNavigate } from 'react-router-dom';
 
 export default function Gallery() {
     // set State variables for search and render functions.
+    const {user, setUser} = useContext(UserContext)
     const [tripData, setTripData] = useState([])
     const [filteredTrip, setFilteredTrip] = useState([])
+    const [authError, setAuthError] = useState(false)
+
     const navigate = useNavigate();
     useEffect(() => {
-        fetch('https://mapbook-memories-backend.herokuapp.com/trips')
+        fetch('https://mapbook-memories-backend.herokuapp.com/trips',{
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include'
+        })
             .then(res => {
                 if (res.ok) {
                     res.json().then(data => {
@@ -16,7 +23,9 @@ export default function Gallery() {
                         setFilteredTrip(data)
                         
                     })
-                } else {
+                } else if (res.status === 401) {
+                    res.json().then(data => setAuthError(data.errors)).then(setTimeout(() => { setUser(!user) }, 5000))
+                }else {
                     res.json().then(data => {
                         console.log(data.errors.toString())
                     })
@@ -32,6 +41,14 @@ export default function Gallery() {
         e.preventDefault()
 
 
+    }
+    if(authError){
+        return(
+            <div className='col-9 mt-5 text-center'>
+             {authError.map(error => <p className="alert-danger m-1">*{error}. Session expired, routing back to Login Page...</p>)}
+
+        </div>
+        )
     }
     if(tripData.length > 0){
     return (

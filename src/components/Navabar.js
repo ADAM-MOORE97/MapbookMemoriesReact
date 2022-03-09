@@ -8,7 +8,7 @@ export default function Navabar() {
     const navigate = useNavigate();
 
     const handleLogOut = () => {
-        fetch(`/logout`, {
+        fetch(`https://mapbook-memories-backend.herokuapp.com/logout`, {
             method: "DELETE",
         }).then(setUser());
     };

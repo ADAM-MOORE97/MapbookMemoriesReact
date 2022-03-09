@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -14,7 +15,7 @@ code {
 .footer{
   margin-top: 5rem;
   margin-bottom: 0px;
-  /* padding: 1rem; */
+
   position: fixed;
   bottom: 0;
   left: 0;

@@ -1,7 +1,7 @@
 {
   "name": "mapbook_memories_react",
   "version": "0.1.0",
-  "proxy": "http://localhost:3000",
+  "proxy": "https://mapbook-memories-backend.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^4.7.4",

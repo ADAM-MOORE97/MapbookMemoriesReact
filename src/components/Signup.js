@@ -22,9 +22,10 @@ export default function Signup() {
     // Add New User to the Database and Backend.
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`/signup`, {
+        fetch(`https://mapbook-memories-backend.herokuapp.com/signup`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(formData)
         }).then(res => {
             if (res.ok) {

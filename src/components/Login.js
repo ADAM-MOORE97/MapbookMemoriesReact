@@ -15,7 +15,7 @@ export default function Login() {
     // Login and begin current_user session.
     const handleSubmit = (e) =>{
         e.preventDefault();
-        fetch(`/login`,{
+        fetch(`https://mapbook-memories-backend.herokuapp.com/login`,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: 'include',
