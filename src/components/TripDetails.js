@@ -80,7 +80,7 @@ export default function TripDetails({setTripData}) {
             </div>
         )
     }
-
+console.log(tripDetails.attachment_urls)
     return (
         // Render Trip Details
         <div className='vh-75'>

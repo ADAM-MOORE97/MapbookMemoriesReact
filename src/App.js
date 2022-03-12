@@ -33,7 +33,7 @@ function App() {
       .then(resp => {
         if (resp.ok){
           resp.json().then(data=> {setUser(data)
-            console.log(data)
+            
     })
         }
         else {

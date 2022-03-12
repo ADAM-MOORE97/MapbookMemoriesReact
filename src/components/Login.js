@@ -23,7 +23,7 @@ export default function Login() {
         }).then(res=>{
             if(res.ok){
                 res.json().then(data => {
-                    console.log(data)
+                    
                     setUser(data)})
             } else{
                 res.json().then(data => {
