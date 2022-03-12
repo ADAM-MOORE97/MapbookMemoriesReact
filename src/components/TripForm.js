@@ -48,7 +48,7 @@ export default function TripForm({ setTripData }) {
                                 attachments: data.attachment_urls
                             })
 
-                            fetch(`/locations/${data.location_id}`,{
+                            fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${data.location_id}`,{
                                 headers: { "Content-Type": "application/json" },
                                 credentials: 'include'
                             })
