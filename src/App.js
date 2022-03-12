@@ -1,5 +1,5 @@
-import react, {useState, useContext, useEffect} from 'react';
-import {Routes, Route, Navigate, useNavigate} from 'react-router-dom'
+import {useState, useContext, useEffect} from 'react';
+import {Routes, Route, useNavigate} from 'react-router-dom'
 import { UserContext } from './context/user';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
