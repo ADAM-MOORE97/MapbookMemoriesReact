@@ -65,7 +65,7 @@ const DashMap = ({ latitude = 39.500000, longitude = -98.100000, magnify = 2.000
                 let lat = Number(location.latitude)
                 let marker = new mapboxgl.Marker({ color: style, anchor: 'bottom' }).setLngLat([lng, lat]).addTo(map)
                 marker.getElement().id = location.id
-                return marker.setPopup(new mapboxgl.Popup().setHTML(`<a className='popup-text'  href='https://mapbook-memories-backend.herokuapp.com/locations/${location.id}'>${location.custom_name}</a><p>Coordinates: (${location.latitude},${location.longitude})</p>`))
+                return marker.setPopup(new mapboxgl.Popup().setHTML(`<a className='popup-text'  href='/locations/${location.id}'>${location.custom_name}</a><p>Coordinates: (${location.latitude},${location.longitude})</p>`))
 
             })
         }
