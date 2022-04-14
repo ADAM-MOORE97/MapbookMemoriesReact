@@ -6,9 +6,9 @@ import { UserContext } from "../context/user";
 export default function Navabar() {
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
-
+    const URL = 'https://mapbook-memories-backend.herokuapp.com'
     const handleLogOut = () => {
-        fetch(`https://mapbook-memories-backend.herokuapp.com/logout`, {
+        fetch(`${URL}/logout`, {
             method: "DELETE",
         }).then(setUser());
     };

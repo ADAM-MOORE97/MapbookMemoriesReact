@@ -12,7 +12,7 @@ export default function TripCard({trip}) {
 
     return (
     // Render Trip cards for Collection.
-        <div className='col d-flex m-2'>
+        <div className='col d-flex mx-auto'>
         <div className='card flex-fill border-dark'>
             <div className='card-body'>
                 <h5 className='card-title'>{trip.name}</h5>

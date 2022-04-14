@@ -27,10 +27,10 @@ export default function TripForm({ setTripData }) {
     const [help, setHelp] = useState(false)
     const [authError, setAuthError] = useState(false)
     // Condition fetch with params
-  
+    const URL = 'https://mapbook-memories-backend.herokuapp.com'
     useEffect(() => {
         if (params.id) {
-            fetch(`https://mapbook-memories-backend.herokuapp.com/trips/${params.id}`,{
+            fetch(`${URL}/trips/${params.id}`,{
                 headers: { "Content-Type": "application/json" },
                 credentials: 'include'
             })
@@ -48,7 +48,7 @@ export default function TripForm({ setTripData }) {
                                 attachments: data.attachment_urls
                             })
 
-                            fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${data.location_id}`,{
+                            fetch(`${URL}/locations/${data.location_id}`,{
                                 headers: { "Content-Type": "application/json" },
                                 credentials: 'include'
                             })
@@ -75,7 +75,7 @@ export default function TripForm({ setTripData }) {
                     }
                 })
         } else {
-            fetch('https://mapbook-memories-backend.herokuapp.com/locations',{
+            fetch(`${URL}/locations`,{
                 headers: { "Content-Type": "application/json" },
                 credentials: 'include'
             })
@@ -114,7 +114,7 @@ export default function TripForm({ setTripData }) {
         if (taken) for (let i = 0; i < form.attachments.files.length; i++) {
             formData.append("attachments[]", form.attachments.files[i])
         }
-        fetch(params.id ? `https://mapbook-memories-backend.herokuapp.com/trips/${params.id}` : 'https://mapbook-memories-backend.herokuapp.com/trips', {
+        fetch(params.id ? `${URL}/trips/${params.id}` : `${URL}/trips`, {
             method: params.id ? 'PATCH' : 'POST',
             credentials: 'include',
             body: formData
@@ -168,7 +168,7 @@ export default function TripForm({ setTripData }) {
         )
     }
     return (
-        <div className='container-fluid mt-5 '>
+        <div className='container-fluid mt-5'>
             <div className='row'>
                 {authError ? authError.map(error => <p className="alert-danger m-1">*{error}. Session expired, routing back to Login Page...</p>) : null}
                 <form className='col-8 text-center border' onSubmit={submitForm}>
@@ -201,7 +201,7 @@ export default function TripForm({ setTripData }) {
                     <textarea className='form-control border-dark' name='description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     {submitErrors ? submitErrors.description.map(error => <p className="alert-danger m-1">*{error}.</p>) : null}
 
-                    <label className='form-label mt-3'>Check if Trip Taken:</label>
+                    <label className='form-label mt-3'>Check if Trip Taken:  </label>
                     <input type='checkbox' name='taken' checked={taken} onChange={(e) => setTaken(e.target.checked)}></input>
                     <br></br>
                     {taken ? <div><label className='form-label mt-3'>Trip Images:</label>

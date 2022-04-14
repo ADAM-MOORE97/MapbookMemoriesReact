@@ -18,11 +18,12 @@ export default function Signup() {
         })
 
     }
+    const URL = 'https://mapbook-memories-backend.herokuapp.com'
     // console.log(`${process.env.REACT_APP_BACKEND_URL}/signup`)
     // Add New User to the Database and Backend.
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`https://mapbook-memories-backend.herokuapp.com/signup`, {
+        fetch(`${URL}/signup`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             credentials: 'include',

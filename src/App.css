@@ -140,13 +140,14 @@ margin: 0 !important;
 
 
 .mapCenter{
-  width: 90vw;
-  height: 2.5vh;
-  font-size: 60%;
-  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+ text-align: center;
+  
+
  
- 
-  margin: auto;
+
 }
 .mapboxgl-ctrl-geocoder--input{
 max-width: fit-content;
@@ -194,7 +195,7 @@ max-width: 100%;
 
 .polaroid-font{
   font-family: 'Shadows Into Light', cursive;
-  font-size: 2.5vw;
+  font-size: 2rem;
 }
 
 /* Popup style */
@@ -235,4 +236,18 @@ max-width: 100%;
   text-align: center;
   border: 1px solid #999;
   font-size: 20px;
+}
+.placeform input {
+  font-size: 16px;
+}
+
+img {
+  object-fit: cover !important;
+  width: 300px;
+  height: 300px !important;
+}
+
+
+input{
+  font-size: 16px !important;
 }

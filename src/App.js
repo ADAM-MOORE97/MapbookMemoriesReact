@@ -24,9 +24,10 @@ function App() {
   const [locationData, setLocationData] = useState([])
   const [tripData, setTripData] = useState([])
   const navigate = useNavigate()
+  const URL = 'https://mapbook-memories-backend.herokuapp.com'
 // console.log(`${process.env.REACT_APP_BACKEND_URL}/authenticate`)
   useEffect(() => {
-    fetch(`https://mapbook-memories-backend.herokuapp.com/authenticate`,{
+    fetch(`${URL}/authenticate`,{
       headers: { "Content-Type": "application/json" },
       credentials: 'include',
     })

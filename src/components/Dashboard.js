@@ -20,11 +20,12 @@ export default function Dashboard({ trips, locations }) {
              
                 <DashMap />
                
-                <div className='row'>
+                <div className='row '>
 
                     <div className='col mt-5 border text-center text-light bg-dark'>
-                        <h6 className='text'>Trips Taken:{tripTaken} </h6>
-                        <h6 className='text'>Trips Planned:{tripPlanned} </h6>
+                        <h5>Trips</h5>
+                        <h6 className='text'>Taken:{tripTaken} </h6>
+                        <h6 className='text'>Planned:{tripPlanned} </h6>
 
 
 
@@ -33,8 +34,9 @@ export default function Dashboard({ trips, locations }) {
 
                         </div>
                         <div className='col mt-5 border text-center text-light bg-dark '>
-                            <h6 className='text'>Locations Visited: {locationVisited} </h6>
-                            <h6 className='text'>Future Locations: {locationPlanned} </h6>
+                            <h5>Locations</h5>
+                            <h6 className='text'>Visited: {locationVisited} </h6>
+                            <h6 className='text'>Planned: {locationPlanned} </h6>
 
                         </div>
                     

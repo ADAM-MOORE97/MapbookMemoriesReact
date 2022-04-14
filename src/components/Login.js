@@ -8,6 +8,7 @@ export default function Login() {
         username: "",
         password: ""
     })
+    const URL = 'https://mapbook-memories-backend.herokuapp.com'
     const handleChange = (e) =>{
         setUserLogin({...userLogin, [e.target.name]:e.target.value})
     }
@@ -15,7 +16,7 @@ export default function Login() {
     // Login and begin current_user session.
     const handleSubmit = (e) =>{
         e.preventDefault();
-        fetch(`https://mapbook-memories-backend.herokuapp.com/login`,{
+        fetch(`${URL}/login`,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: 'include',

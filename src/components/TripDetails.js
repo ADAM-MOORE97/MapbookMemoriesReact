@@ -17,9 +17,10 @@ export default function TripDetails({setTripData}) {
     const [showImg, setShowImg] = useState(false)
     const [showLocation, setShowLocation] = useState(false)
     // fetch specified trip data given id.
+    const URL = 'https://mapbook-memories-backend.herokuapp.com'
 
     useEffect(() => {
-        fetch(`https://mapbook-memories-backend.herokuapp.com/trips/${params.id}`,{
+        fetch(`${URL}/trips/${params.id}`,{
             headers: { "Content-Type": "application/json" },
             credentials: 'include'
         })
@@ -28,7 +29,7 @@ export default function TripDetails({setTripData}) {
                     res.json().then(data => {
                         console.log(data)
                         setTripDetails(data)
-                        fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${data.location_id}`,{
+                        fetch(`${URL}/locations/${data.location_id}`,{
                             headers: { "Content-Type": "application/json" },
                             credentials: 'include'
                         })
@@ -52,7 +53,7 @@ export default function TripDetails({setTripData}) {
             })
     }, [params.id, navigate])
     const handleDelete = (trip) =>{
-        fetch(`https://mapbook-memories-backend.herokuapp.com/trips/${trip.id}`,{
+        fetch(`${URL}/trips/${trip.id}`,{
             method: 'DELETE',
             headers: { "Content-Type": "application/json" },
             credentials: 'include'

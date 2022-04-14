@@ -8,7 +8,7 @@ export default function TripCollections({ trips }) {
     if (trips.length > 0) {
         return (
             <div className='container-fluid'>
-                <div className='row mt-2'>
+                <div className='row mt-5 border collection'>
                     {trips.map(trip => <TripCard trip={trip} key={trip.id} />)}
                 </div>
             </div>

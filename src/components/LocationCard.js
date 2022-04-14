@@ -14,7 +14,7 @@ export default function LocationCard({ location }) {
 
     return (
     // Render card for each Location in user's collection.
-        <div className='col d-flex m-2'>
+        <div className='col d-flex mx-auto'>
             <div className='card flex-fill border-dark'>
                 <div className='card-body'>
                     <h5 className='card-title'>{location.custom_name}</h5>

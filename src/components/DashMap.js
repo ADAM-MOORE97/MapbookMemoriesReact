@@ -6,10 +6,8 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 const styles = {
-    width: "90vw",
-    height: "50vh",
-    margin: 'auto',
-    padding: '5em',
+    width: "100vw",
+    height: "60vh",   
     border: "5px solid"
 
 };
@@ -40,9 +38,6 @@ const DashMap = ({ latitude = 39.500000, longitude = -98.100000, magnify = 2.000
             });
 
             map.addControl(directions, 'top-right')
-            directions.on('result', (e) => {
-                console.log(e.result)
-            })
             map.on("load", () => {
                 setMap(map);
                 map.resize();
@@ -76,11 +71,11 @@ const DashMap = ({ latitude = 39.500000, longitude = -98.100000, magnify = 2.000
 
 
     return (
-        <div className="row m-1">
+        <div className="row mx-auto">
 
             <div ref={el => (mapContainer.current = el)} style={styles} />
 
-            <p className="mapCenter mt-2 bg-dark text-light">Center: Latitude: {lat} | Longitude: {lng} | Zoom: {zoom}</p>
+            <p className="mapCenter mt-2 bg-dark text-light">Latitude: {lat} | Longitude: {lng}  (Zoom: {zoom})</p>
 
 
 

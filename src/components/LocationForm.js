@@ -26,11 +26,12 @@ export default function LocationForm({ setLocationData }) {
 
     // Help Message
     const [help, setHelp] = useState(false)
+    const URL = 'https://mapbook-memories-backend.herokuapp.com'
 
     useEffect(() => {
         // Conditionally render Location info for updating data into form.
         if (params.id) {
-            fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${params.id}`,{
+            fetch(`${URL}/locations/${params.id}`,{
                 headers: { "Content-Type": "application/json" },
                 credentials: 'include'
             })
@@ -68,7 +69,7 @@ export default function LocationForm({ setLocationData }) {
         locationInfo.append('visited', visited)
 
         // Conditionally add or update form given circumstance of component.
-        fetch(params.id ? `https://mapbook-memories-backend.herokuapp.com/locations/${params.id}` : 'https://mapbook-memories-backend.herokuapp.com/locations', {
+        fetch(params.id ? `${URL}/locations/${params.id}` : `${URL}/locations`, {
             method: params.id ? 'PATCH' : 'POST',
             credentials: 'include',
             body: locationInfo
@@ -76,7 +77,7 @@ export default function LocationForm({ setLocationData }) {
             if (res.ok) {
                 res.json().then(data => {
                     setLocationData(data)
-                    navigate(`/locations/${data.id}`)
+                    navigate(`${URL}/locations/${data.id}`)
                 })
             } else if (res.status === 422) {
                 res.json().then(data => {
@@ -123,12 +124,12 @@ export default function LocationForm({ setLocationData }) {
         <div className='container mt-5'>
             <PlaceFormMap setMapped_Address={setMapped_Address} setPlace_Type={setPlace_Type} setLatitude={setLatitude} setLongitude={setLongitude} />
             <div className='text-center'>
-                <i role='button' className="bi bi-info-circle m-1" onClick={helpMessage}></i>
+                <i role='button' className="bi bi-info-circle mt-3" onClick={helpMessage}></i>
                 {help ? <p className='alert-dark m-1'>Search for a Location using the Map and appropriate fields will be filled. Remaining fields are customizable at the user's discretion. Thank you, and enjoy! </p> : null}
             </div>
             <div >
                 {authError ? authError.map(error => <p className="alert-danger m-1">*{error}. Session expired, routing back to Login Page...</p>) : null}
-                <form onSubmit={(e) => handleSubmit(e)} className=' border m-5 pb-5 h-100 text-center' >
+                <form onSubmit={(e) => handleSubmit(e)} className='placeform mt-3 border mx-auto pb-5 h-100 text-center w-100' >
 
                     <label className='form-label mt-3'> Custom Name</label>
 

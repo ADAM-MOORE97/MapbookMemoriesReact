@@ -11,7 +11,7 @@ export default function ImageCard({ gallery = true, trip, image_urls }) {
             {gallery ? <h3 className='text-center'>{trip.start_date.substring(5, 11)} to {trip.end_date.substring(5, 11)}</h3> : null}
             {image_urls.map(url => {
                 return (
-                    <div key={trip.attachment_url} className='col-3 card p-2 m-2 border-dark'>
+                    <div key={trip.attachment_url} className='col-sm card p-2 m-2 border-dark'>
                         <div className='bg-dark d-flex rounded p-2 w-100 h-100 justify-content-center'>
                             <img className='rounded img-fluid trip-image' src={url} alt={trip.name} />
                         </div>

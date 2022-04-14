@@ -16,11 +16,11 @@ export default function LocationDetails({setLocationData}) {
     const [error, setError] = useState('')
     const [tripsShown, setTripsShown] = useState(false)
     const [authError, setAuthError] = useState(false)
-
+    const URL = 'https://mapbook-memories-backend.herokuapp.com'
 
     // Fetch specified Location data, or render usable error message for user.
     useEffect(() => {
-        fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${params.id}`,{
+        fetch(`${URL}/locations/${params.id}`,{
             headers: { "Content-Type": "application/json" },
             credentials: 'include'
         })
@@ -48,7 +48,7 @@ export default function LocationDetails({setLocationData}) {
             })
     }, [])
     const handleDelete = (place) =>{
-        fetch(`https://mapbook-memories-backend.herokuapp.com/locations/${place.id}`, {
+        fetch(`${URL}/locations/${place.id}`, {
             method: 'DELETE',
             credentials: 'include'
         }).then(r=> {
@@ -78,11 +78,11 @@ export default function LocationDetails({setLocationData}) {
         <div className="mx-auto">
 
             <div className="mt-5"><DashMap latitude={locationDetails.latitude} longitude={locationDetails.longitude} magnify={4.5} /></div>
-            <div className=" row mt-5 rounded m-5">
+            <div className=" row mt-5 rounded m-5 text-center">
                 <div className={tripsShown ? "p-3 border rounded m-1 col text-center bg-light" : "p-3 border rounded col-12 bg-light"}>
                     <h1>{locationDetails.custom_name}</h1>
                     <h2>{locationDetails.mapped_address}</h2>
-                    <h3>{locationDetails.latitude}, {locationDetails.longitude}</h3>
+                    <h3>({locationDetails.latitude}, {locationDetails.longitude})</h3>
                     <p>{locationDetails.description}</p>
                     <p>Trips taken: {locationDetails.trips.length}</p>
                     {locationDetails.trips.length > 0 ? <button className="btn btn-dark" onClick={() => setTripsShown(tripsShown => !tripsShown)}>{tripsShown ? 'Hide Trips' : 'Show Trips'}</button> : null}

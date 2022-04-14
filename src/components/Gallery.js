@@ -9,10 +9,10 @@ export default function Gallery() {
     const [tripData, setTripData] = useState([])
     const [filteredTrip, setFilteredTrip] = useState([])
     const [authError, setAuthError] = useState(false)
-
+    const URL = 'https://mapbook-memories-backend.herokuapp.com'
     const navigate = useNavigate();
     useEffect(() => {
-        fetch('https://mapbook-memories-backend.herokuapp.com/trips',{
+        fetch(`${URL}/trips`,{
             headers: { "Content-Type": "application/json" },
             credentials: 'include'
         })
@@ -54,7 +54,7 @@ export default function Gallery() {
     return (
         // Render search bar and container for image 'cards'
         <div className='justify-content-center'>
-            <div className='w-75 flex'>
+            <div className='w-100 flex'>
                 <form onSubmit={handleSubmit} className="text-center">
                     <input
                         className="form-control me-2 border-dark"
